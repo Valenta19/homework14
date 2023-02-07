@@ -1,19 +1,14 @@
 package transport;
 
-public class Car {
+
+public class Car extends Transport {
 
     private String transmission;
     private final String bodyType;
     private String registrationNumber;
     private final int numberOfSeats;
     private boolean summer;
-
-    private final String brand;
-    private final String model;
     private double engineVolume;
-    private String color;
-    private final int year;
-    private final String country;
     private Kay kay;
 
     public static class Kay {
@@ -40,26 +35,9 @@ public class Car {
         }
     }
 
-    public Car(String brand, String model, double engineVolume, String color, int year, String country, String bodyType, Boolean summer, int numberOfSeats, String registrationNumber, String transmission, Kay kay) {
-        if (brand == null || brand.isEmpty()) {
-            brand = "default";
-        }
-        this.brand = brand;
-
-        if (model == null || model.isEmpty()) {
-            model = "default";
-        }
-        this.model = model;
-
-        setEngineVolume(engineVolume);
-        setColor(color);
-        this.year = (year <= 0 ? 2000 : year);
-
-        if (country == null || country.isEmpty()) {
-            country = "default";
-        }
-        this.country = country;
-
+    public Car(String brand, String model, int year, String country, String color, int maximumMovementSpeed, double engineVolume, String bodyType, Boolean summer, int numberOfSeats, String registrationNumber, String transmission, Kay kay) {
+        super(brand, model, year, country, color, maximumMovementSpeed);
+        this.engineVolume = engineVolume;
         if (numberOfSeats <= 0) {
             numberOfSeats = 5;
         }
@@ -85,28 +63,12 @@ public class Car {
         this.kay = kay;
     }
 
-    public String getBrand() {
-        return brand;
-    }
-
     public String getBodyType() {
         return bodyType;
     }
 
     public int getNumberOfSeats() {
         return numberOfSeats;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public String getModel() {
-        return model;
     }
 
     public String getTransmission() {
@@ -139,18 +101,6 @@ public class Car {
         this.engineVolume = (engineVolume <= 0 ? 1.5 : engineVolume);
     }
 
-    {
-        this.engineVolume = engineVolume;
-    }
-
-    public void setColor(String color) {
-        if (color == null || color.isEmpty()) {
-            color = "белый";
-        }
-        this.color = color;
-    }
-
-
     public boolean isSummer() {
         return summer;
     }
@@ -159,35 +109,25 @@ public class Car {
         return engineVolume;
     }
 
-    public String getColor() {
-        return color;
-    }
-
-
     public void changeTyres(int month) {
         if ((month >= 11 && month <= 12) || (month >= 1 && month <= 3)) {
             summer = false;
-
         }
         if (month >= 4 && month <= 10) {
             summer = true;
         }
     }
 
-
     public String toString() {
-        return "марка " + brand +
-                " модель " + model +
-                ", год производства " + year +
-                ", объем двигателя в литрах " + engineVolume +
-                ", цвет кузова " + color +
-                ", страна сборки " + country +
+        return super.toString() + ", " +
+                ", обьем двигателя в литрах" + engineVolume +
                 ", коробка передач " + transmission +
                 ", тип кузова " + bodyType +
                 ", регестрацционный номер " + registrationNumber +
                 ",  кол-во мест " + numberOfSeats +
-                ", " + (summer ? "летнии" : " зимнии") + ", " +
+                ", " + (summer ? "летнии" : " зимнии") + ",  " +
                 kay;
     }
-
 }
+
+
