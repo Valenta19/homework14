@@ -55,6 +55,11 @@ public class Car extends Transport<DriverB> {
     }
 
     @Override
+    public boolean passDiagnostics() {
+        return true;
+    }
+
+    @Override
     public void printType() {
         if (getType() != null) {
             System.out.println(getType());

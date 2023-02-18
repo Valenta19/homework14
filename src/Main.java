@@ -1,6 +1,8 @@
 
 import transport.*;
 
+import java.io.File;
+
 public class Main {
     public static void main(String[] args) {
         for (int i = 1; i <= 4; i++) {
@@ -26,6 +28,13 @@ public class Main {
                     5.3 + i,
                     driverC, Trucks.CarryingCapacity.N1
             );
+            try {
+                checkTransport(bus, car, trucks);
+            } catch (TransportTypeException e) {
+                e.printStackTrace();
+                System.out.println(e.getMessage());
+            }
+
             printInfo(car);
             printInfo(bus);
             printInfo(trucks);
@@ -37,7 +46,19 @@ public class Main {
         System.out.println(Car.BodyTypes.COUPE);
         System.out.println(Bus.Capacity.EXTRA_LARGE);
         System.out.println(Bus.Capacity.EXTRA_LARGE.getLowerBound());
+
     }
+
+    public static void checkTransport(Transport... transports) throws TransportTypeException {
+        int count = 0;
+        for (Transport transport : transports) {
+            if (!transport.passDiagnostics()) {
+                count++;
+            }
+        }
+
+    }
+
     public static void printInfo(Transport<?> transport) {
         System.out.println("водитель " + transport.getDriver().getName() + " управляет автомобилем " + transport.getBrand() + " и будет участвовать в заезде");
     }

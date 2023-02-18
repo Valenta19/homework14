@@ -72,6 +72,7 @@ public abstract class Transport<T extends Driver> implements Competing {
     public Type getType() {
         return this.type;
     }
+    public abstract boolean passDiagnostics() throws TransportTypeException;
 
     public abstract void printType();
 }
