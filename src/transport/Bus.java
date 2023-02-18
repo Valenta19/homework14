@@ -1,9 +1,11 @@
 package transport;
 
 public class Bus extends Transport<DriverD> {
+    Capacity capacity;
 
-    public Bus(String brand, String model, double engineVolume, DriverD driver) {
+    public Bus(String brand, String model, double engineVolume, DriverD driver, Capacity capacity) {
         super(brand, model, engineVolume, driver);
+        this.capacity = capacity;
     }
 
     @Override
@@ -14,6 +16,20 @@ public class Bus extends Transport<DriverD> {
     @Override
     public void finishMove() {
         System.out.println("Автобус марки " + getBrand() + " закончил движение");
+    }
+
+    @Override
+    public Type getType() {
+        return Type.BUS;
+    }
+
+    @Override
+    public void printType() {
+        if (getType() != null) {
+            System.out.println(getType());
+        } else {
+            System.out.println("Данных по транспортному средству недостаточно");
+        }
     }
 
     public void pitStop() {
@@ -35,5 +51,47 @@ public class Bus extends Transport<DriverD> {
         int maxBound = 140;
         int maxSpead = (int) (minBound + (maxBound + minBound) * Math.random());
         System.out.println(" максимальная скорость для астобуса " + maxSpead);
+    }
+
+    public enum Capacity {
+        EXTRA_SMALL(null, 10),
+        SMALL(null, 25),
+        AVERAGE(25, 50),
+        LARGE(50, 80),
+        EXTRA_LARGE(80, 120);
+
+        private Integer lowerBound;
+        private Integer upperBound;
+
+        Capacity(Integer lowerBound, Integer upperBound) {
+            this.lowerBound = lowerBound;
+            this.upperBound = upperBound;
+
+        }
+
+        public Integer getLowerBound() {
+            return lowerBound;
+        }
+
+        public void setLowerBound(Integer lowerBound) {
+            this.lowerBound = lowerBound;
+        }
+
+        public Integer getUpperBound() {
+            return upperBound;
+        }
+
+        public void setUpperBound(Integer upperBound) {
+            this.upperBound = upperBound;
+        }
+
+        @Override
+        public String toString() {
+            return "Вместимость:" +
+                    "нижняя граница = " + (lowerBound == null ? " " : String.valueOf(lowerBound)) +
+                    ", верхняя граница = " + (upperBound == null ? " " : String.valueOf(upperBound)) +
+                    " Мест" +
+                    '}';
+        }
     }
 }
