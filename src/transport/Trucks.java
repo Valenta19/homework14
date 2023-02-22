@@ -24,6 +24,11 @@ public class Trucks extends Transport<DriverC> {
     }
 
     @Override
+    public boolean passDiagnostics() {
+        return true;
+    }
+
+    @Override
     public void printType() {
         if (getType() != null) {
             System.out.println(getType());

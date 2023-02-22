@@ -1,5 +1,7 @@
 package transport;
 
+import java.io.IOException;
+
 public class Bus extends Transport<DriverD> {
     Capacity capacity;
 
@@ -21,6 +23,11 @@ public class Bus extends Transport<DriverD> {
     @Override
     public Type getType() {
         return Type.BUS;
+    }
+
+    @Override
+    public boolean passDiagnostics() throws TransportTypeException {
+        throw new TransportTypeException("автобусам проходить диагностику не нужно");
     }
 
     @Override
