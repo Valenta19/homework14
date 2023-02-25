@@ -1,12 +1,14 @@
 package transport;
 
+import java.util.List;
+
 public class Trucks extends Transport<DriverC> {
     CarryingCapacity carryingCapacity;
 
-    public Trucks(String brand, String model, double engineVolume, DriverC driver, CarryingCapacity carryingCapacity) {
-        super(brand, model, engineVolume, driver);
-        this.carryingCapacity = carryingCapacity;
+    public Trucks(String brand, String model, double engineVolume, DriverC driver, CarryingCapacity n1, List<Mechanic> mechanicList) {
+        super(brand, model, engineVolume, driver, mechanicList);
     }
+
 
     @Override
     public void startMove() {
@@ -56,6 +58,14 @@ public class Trucks extends Transport<DriverC> {
         int maxBound = 140;
         int maxSpead = (int) (minBound + (maxBound + minBound) * Math.random());
         System.out.println(" максимальная скорость для грузовика " + maxSpead);
+    }
+
+    public CarryingCapacity getCarryingCapacity() {
+        return carryingCapacity;
+    }
+
+    public void setCarryingCapacity(CarryingCapacity carryingCapacity) {
+        this.carryingCapacity = carryingCapacity;
     }
 
     public enum CarryingCapacity {
