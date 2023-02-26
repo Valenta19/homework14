@@ -2,13 +2,13 @@ package transport;
 
 public abstract class Driver {
     private String name;
-    private  boolean hasDriverLicense;
+    private boolean hasDriverLicense;
     private int Experience;
 
     public Driver(String name, boolean hasDriverLicense, int experience) {
         this.name = name;
         this.hasDriverLicense = hasDriverLicense;
-       this.Experience = experience;
+        this.Experience = experience;
     }
 
     public String getName() {
@@ -36,6 +36,9 @@ public abstract class Driver {
     }
 
     abstract void startMoving();
+
     abstract void finishMoving();
+
     abstract void refill();
+
 }

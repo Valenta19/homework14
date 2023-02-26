@@ -1,7 +1,15 @@
 package transport;
 
 
+import java.util.List;
+
 public class Car extends Transport<DriverB> {
+
+
+    public Car(String brand, String model, double engineVolume, DriverB driver, BodyTypes hatchback, List<Mechanic> mechanicList) {
+        super(brand, model, engineVolume, driver, mechanicList);
+    }
+
     public enum BodyTypes {
         SEDAN("Седан"),
         HATCHBACK("Хетчбэк"),
@@ -25,20 +33,10 @@ public class Car extends Transport<DriverB> {
 
         public String toString() {
             return " тип кузова " + bodyType;
-
         }
-
-
     }
 
     BodyTypes bodyTypes;
-
-    public Car(String brand, String model, double engineVolume, DriverB driver, BodyTypes bodyTypes) {
-        super(brand, model, engineVolume, driver);
-        this.bodyTypes = bodyTypes;
-
-    }
-
     @Override
     public void startMove() {
         System.out.println("Автомабиль марки" + getBrand() + "начал движение");

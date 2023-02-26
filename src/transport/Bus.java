@@ -1,14 +1,14 @@
 package transport;
 
-import java.io.IOException;
+import java.util.List;
 
 public class Bus extends Transport<DriverD> {
     Capacity capacity;
 
-    public Bus(String brand, String model, double engineVolume, DriverD driver, Capacity capacity) {
-        super(brand, model, engineVolume, driver);
-        this.capacity = capacity;
+    public Bus(String brand, String model, double engineVolume, DriverD driver, Capacity extraLarge, List<Mechanic> mechanicList) {
+        super(brand, model, engineVolume, driver, mechanicList);
     }
+
 
     @Override
     public void startMove() {
