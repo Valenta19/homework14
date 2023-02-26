@@ -3,7 +3,9 @@ import transport.*;
 
 import java.util.ArrayList;
 import java.io.File;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Main {
     public static void main(String[] args) {
@@ -89,6 +91,23 @@ public class Main {
         serviceStation.carryOutMaintenance();
         transportsInfo(cars[1]);
         mechanic3.performMaintenance();
+
+        Set<Driver> driverList = new HashSet<>();
+        driverList.add(driverB2);
+        driverList.add(driverB2);
+        driverList.add(driverB3);
+        driverList.add(driverB1);
+        driverList.add(driverB2);
+        driverList.add(driverB2);
+        driverList.add(driverB1);
+        driverList.add(driverB2);
+        driverList.add(driverB3);
+        driverList.add(driverB4);
+        driverList.add(driverD2);
+        System.out.println("информация о водителях без повтора: ");
+        for (Driver driver : driverList) {
+            System.out.println(driver.getName() + " " +  driver.getExperience());
+        }
     }
 
     public static void printInfo(Transport<?>[] transports) {
