@@ -102,9 +102,11 @@ public class Main {
         driverList.add(driverB1);
         driverList.add(driverB2);
         driverList.add(driverB3);
+        driverList.add(driverB4);
+        driverList.add(driverD2);
         System.out.println("информация о водителях без повтора: ");
         for (Driver driver : driverList) {
-            System.out.println(driver.getName());
+            System.out.println(driver.getName() + " " +  driver.getExperience());
         }
     }
 
