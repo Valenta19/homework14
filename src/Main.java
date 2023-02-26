@@ -104,15 +104,24 @@ public class Main {
         for (Driver driver : driverList) {
             System.out.println(driver.getName() + " " + driver.getExperience());
         }
-        HashMap<Car, Mechanic> map = new HashMap<>();
-        map.put(cars[2], mechanic1);
+        HashMap<Transport, Mechanic> map = new HashMap<>();
         map.put(cars[1], mechanic1);
+        map.put(cars[2], mechanic1);
         map.put(cars[0], mechanic3);
         map.put(cars[3], mechanic2);
         map.put(cars[3], mechanic2);
         map.put(cars[1], mechanic3);
+        map.put(buses[1], mechanic1);
+        map.put(buses[3], mechanic1);
+        map.put(buses[3], mechanic2);
+        map.put(buses[1], mechanic3);
+        map.put(trucks[1], mechanic2);
+        map.put(trucks[1], mechanic3);
+        map.put(trucks[2], mechanic4);
+        map.put(trucks[2], mechanic3);
 
-        for (Map.Entry<Car, Mechanic> entry : map.entrySet()) {
+
+        for (Map.Entry<Transport, Mechanic> entry : map.entrySet()) {
             System.out.println(" Машина = " + entry.getKey() + " " + entry.getValue());
         }
     }
