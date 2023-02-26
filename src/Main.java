@@ -1,11 +1,7 @@
 
 import transport.*;
 
-import java.util.ArrayList;
-import java.io.File;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -107,6 +103,16 @@ public class Main {
         System.out.println("информация о водителях без повтора: ");
         for (Driver driver : driverList) {
             System.out.println(driver.getName() + " " +  driver.getExperience());
+        }
+        HashMap< Car, Mechanic> map = new HashMap<>();
+        map.put(cars[1], mechanic1);
+        map.put(cars[2], mechanic1);
+        map.put(cars[0], mechanic3);
+        map.put(cars[3], mechanic2);
+        map.put(cars[3], mechanic2);
+
+        for (Map.Entry<Car,Mechanic> entry : map.entrySet()) {
+            System.out.println(" Машина = " + entry.getKey() + " " + entry.getValue());
         }
     }
 
