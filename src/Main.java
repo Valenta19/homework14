@@ -102,16 +102,17 @@ public class Main {
         driverList.add(driverD2);
         System.out.println("информация о водителях без повтора: ");
         for (Driver driver : driverList) {
-            System.out.println(driver.getName() + " " +  driver.getExperience());
+            System.out.println(driver.getName() + " " + driver.getExperience());
         }
-        HashMap< Car, Mechanic> map = new HashMap<>();
-        map.put(cars[1], mechanic1);
+        HashMap<Car, Mechanic> map = new HashMap<>();
         map.put(cars[2], mechanic1);
+        map.put(cars[1], mechanic1);
         map.put(cars[0], mechanic3);
         map.put(cars[3], mechanic2);
         map.put(cars[3], mechanic2);
+        map.put(cars[1], mechanic3);
 
-        for (Map.Entry<Car,Mechanic> entry : map.entrySet()) {
+        for (Map.Entry<Car, Mechanic> entry : map.entrySet()) {
             System.out.println(" Машина = " + entry.getKey() + " " + entry.getValue());
         }
     }
